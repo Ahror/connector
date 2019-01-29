@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Connector.Abstractions
+﻿namespace Connector.Abstractions
 {
     /// <summary>
     /// Base class for trade and candle 
