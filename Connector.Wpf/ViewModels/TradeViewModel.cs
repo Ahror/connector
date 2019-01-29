@@ -1,6 +1,7 @@
 ﻿using Connector.Connectors;
 using Connector.Model;
 using Connector.Wpf.Abstractions;
+using Connector.Wpf.Abstractions.ViewModels;
 using ReactiveUI;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,13 +19,19 @@ namespace Connector.Wpf.ViewModels
         {
             get
             {
-                if (tradeConnector == null) tradeConnector = new TradeConnector();
+                if (tradeConnector == null)
+                    tradeConnector = new TradeConnector();
+
                 return tradeConnector;
             }
         }
 
         ObservableCollection<Trade> trades = new ObservableCollection<Trade>();
-        public ObservableCollection<Trade> Trades { get => trades; set { this.RaiseAndSetIfChanged(ref trades, value); } }
+        public ObservableCollection<Trade> Trades
+        {
+            get => trades;
+            set { this.RaiseAndSetIfChanged(ref trades, value); }
+        }
 
         public TradeViewModel()
         {

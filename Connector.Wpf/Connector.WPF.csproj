@@ -62,11 +62,11 @@
     </Compile>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\ZeroToVisibilityConverter.cs" />
-    <Compile Include="Abstractions\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CandleViewModel.cs" />
-    <Compile Include="Abstractions\IBaseViewModel.cs" />
-    <Compile Include="Abstractions\ICandleViewModel.cs" />
-    <Compile Include="Abstractions\ITradeViewModel.cs" />
+    <Compile Include="Abstractions\ViewModels\IBaseViewModel.cs" />
+    <Compile Include="Abstractions\ViewModels\ICandleViewModel.cs" />
+    <Compile Include="Abstractions\ViewModels\ITradeViewModel.cs" />
     <Compile Include="ViewModels\TradeViewModel.cs" />
     <Page Include="Controls\CandleControl.xaml">
       <SubType>Designer</SubType>
@@ -125,6 +125,12 @@
     <PackageReference Include="Autofac.Extensions.DependencyInjection">
       <Version>4.3.1</Version>
     </PackageReference>
+    <PackageReference Include="MahApps.Metro">
+      <Version>1.6.5</Version>
+    </PackageReference>
+    <PackageReference Include="MahApps.Metro.Resources">
+      <Version>0.6.1</Version>
+    </PackageReference>
     <PackageReference Include="ReactiveUI">
       <Version>9.8.23</Version>
     </PackageReference>
@@ -132,5 +138,6 @@
       <Version>9.8.23</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

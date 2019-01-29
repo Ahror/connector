@@ -1,4 +1,5 @@
-﻿using ReactiveUI;
+﻿using Connector.Wpf.Abstractions.ViewModels;
+using ReactiveUI;
 using System.Windows.Input;
 
 namespace Connector.Wpf.Abstractions

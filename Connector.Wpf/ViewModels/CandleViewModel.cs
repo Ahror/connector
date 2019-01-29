@@ -1,6 +1,7 @@
 ﻿using Connector.Connectors;
 using Connector.Model;
 using Connector.Wpf.Abstractions;
+using Connector.Wpf.Abstractions.ViewModels;
 using ReactiveUI;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,7 +14,11 @@ namespace Connector.Wpf.ViewModels
     public class CandleViewModel : BaseViewModel, ICandleViewModel
     {
         string timeFrame = "1m";
-        public string TimeFrame { get => timeFrame; set { this.RaiseAndSetIfChanged(ref timeFrame, value); } }
+        public string TimeFrame
+        {
+            get => timeFrame;
+            set { this.RaiseAndSetIfChanged(ref timeFrame, value); }
+        }
 
         string section = "hist";
         public string Section
@@ -22,19 +27,25 @@ namespace Connector.Wpf.ViewModels
             set { this.RaiseAndSetIfChanged(ref section, value); }
         }
 
-        private CandleConnector candleConnector;
+        CandleConnector candleConnector;
 
         public CandleConnector CandleConnector
         {
             get
             {
-                if (candleConnector == null) candleConnector = new CandleConnector();
+                if (candleConnector == null)
+                    candleConnector = new CandleConnector();
+
                 return candleConnector;
             }
         }
 
         ObservableCollection<Candle> candles = new ObservableCollection<Candle>();
-        public ObservableCollection<Candle> Candles { get => candles; set { this.RaiseAndSetIfChanged(ref candles, value); } }
+        public ObservableCollection<Candle> Candles
+        {
+            get => candles;
+            set { this.RaiseAndSetIfChanged(ref candles, value); }
+        }
 
         public CandleViewModel()
         {

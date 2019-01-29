@@ -14,24 +14,25 @@ namespace Connector.Connectors
         {
             ICollection<Candle> candles = new List<Candle>();
             JArray jarray = (JArray)JsonConvert.DeserializeObject(json);
+
             if (jarray != null)
             {
                 if (query.Contains("hist"))
                 {
                     foreach (JArray item in jarray)
                     {
-                        candles.Add(GenerateCandle(item));
+                        candles.Add(Create(item));
                     }
                 }
                 else
                 {
-                    candles.Add(GenerateCandle(jarray));
+                    candles.Add(Create(jarray));
                 }
             }
             return candles;
         }
 
-        private Candle GenerateCandle(JArray item)
+        Candle Create(JArray item)
         {
             return new Candle
             {

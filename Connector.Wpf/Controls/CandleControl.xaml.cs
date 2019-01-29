@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using Connector.Wpf.ViewModels;
+using Connector.Wpf.Abstractions.ViewModels;
 using System.Windows.Controls;
 
 namespace Connector.Wpf.Controls

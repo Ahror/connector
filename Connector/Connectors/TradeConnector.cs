@@ -26,6 +26,7 @@ namespace Connector.Connectors
                     MTS = (long)item[1],
                     Amount = (float)item[2]
                 };
+
                 if (query.ToLower().Contains("tbtcusd"))
                 {
                     trade.Price = (float)item[3];
