@@ -7,7 +7,7 @@ namespace Connector.Connectors
 {
     public class TradeConnector : BaseConnector<Trade>
     {
-        protected override ICollection<Trade> Deserialize(string json, bool istBTCUSD)
+        protected override ICollection<Trade> Deserialize(string json, string query)
         {
             ICollection<Trade> trades = new List<Trade>();
             JArray jarray = (JArray)JsonConvert.DeserializeObject(json);
@@ -20,7 +20,7 @@ namespace Connector.Connectors
                     MTS = (long)item[1],
                     Amount = (float)item[2]
                 };
-                if (istBTCUSD)
+                if (query.ToLower().Contains("tbtcusd"))
                 {
                     trade.Price = (float)item[3];
                 }

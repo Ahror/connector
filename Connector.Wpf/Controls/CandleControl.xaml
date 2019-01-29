@@ -3,10 +3,80 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Connector.Wpf.Controls"
+             xmlns:converters="clr-namespace:Connector.Wpf.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
-            
+        <Grid Margin="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Symbol"/>
+            <TextBox Grid.Column="1" Text="{Binding Symbol}" Margin="5"/>
+
+            <TextBlock Grid.Row="1" Text="Time frame"/>
+            <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding TimeFrame}" Margin="5"/>
+
+            <TextBlock Grid.Row="2" Text="Section"/>
+            <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Section}" Margin="5"/>
+
+            <Button Grid.Row="3" Command="{Binding SendRequest}" Margin="5" Content="Send a request" Grid.Column="1" HorizontalAlignment="Right"/>
+
+            <ListView ItemsSource="{Binding Candles}" Margin="5" Grid.Row="4" Grid.ColumnSpan="2">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <StackPanel.Resources>
+                                <Style TargetType="StackPanel">
+                                    <Setter Property="Margin" Value="3"></Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="MTS: "/>
+                                <TextBlock Text="{Binding MTS}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Open: "/>
+                                <TextBlock Text="{Binding Open}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Close: "/>
+                                <TextBlock Text="{Binding Close}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="high: "/>
+                                <TextBlock Text="{Binding High}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Low: "/>
+                                <TextBlock Text="{Binding Low}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Volume: "/>
+                                <TextBlock Text="{Binding Volume}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <Grid Background="Gray" Visibility="{Binding IsBusy,Converter={StaticResource BooleanToVisibilityConverter}}" >
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text=" Loading..."/>
+        </Grid>
     </Grid>
+
 </UserControl>

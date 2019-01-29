@@ -26,8 +26,10 @@ namespace Connector.Wpf.ViewModels
         {
             SendRequest = ReactiveCommand.CreateFromTask(async () =>
             {
+                IsBusy = true;
                 ICollection<Trade> result = await TradeConnector.GetRestEntitiesAsync($"v2/trades/{Symbol}/hist");
                 Trades = new ObservableCollection<Trade>(result);
+                IsBusy = false;
 
             }, this.WhenAny(x => x.Symbol, x => !string.IsNullOrEmpty(x.Value)));
         }

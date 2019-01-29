@@ -60,6 +60,7 @@
     <Compile Include="Controls\TradeControl.xaml.cs">
       <DependentUpon>TradeControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\ZeroToVisibilityConverter.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CandleViewModel.cs" />

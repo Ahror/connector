@@ -9,66 +9,72 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <converters:ZeroToVisibilityConverter x:Key="ZeroToVisibilityConverter"/>
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        <Grid Margin="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Symbol"/>
-        <TextBox Grid.Column="1" Text="{Binding Symbol}"/>
+            <TextBlock Text="Symbol"/>
+            <TextBox Grid.Column="1" Text="{Binding Symbol}" Margin="5"/>
 
-        <Button Grid.Row="1" Command="{Binding SendRequest}" Content="Send a request" Grid.Column="1" HorizontalAlignment="Right"/>
+            <Button Grid.Row="1" Command="{Binding SendRequest}" Margin="5" Content="Send a request" Grid.Column="1" HorizontalAlignment="Right"/>
 
-        <ListView ItemsSource="{Binding Trades}" Grid.Row="2" Grid.ColumnSpan="2">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <StackPanel.Resources>
-                            <Style TargetType="StackPanel">
-                                <Setter Property="Margin" Value="3"></Setter>
-                            </Style>
-                        </StackPanel.Resources>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Id: "/>
-                            <TextBlock Text="{Binding Id}"/>
+            <ListView ItemsSource="{Binding Trades}" Margin="5" Grid.Row="2" Grid.ColumnSpan="2">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <StackPanel.Resources>
+                                <Style TargetType="StackPanel">
+                                    <Setter Property="Margin" Value="3"></Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Id: "/>
+                                <TextBlock Text="{Binding Id}"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="MTS: "/>
+                                <TextBlock Text="{Binding MTS}"/>
+                            </StackPanel>
+
+
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Text="Amount: "/>
+                                <TextBlock Text="{Binding Amount}"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Visibility="{Binding Price, Converter={StaticResource ZeroToVisibilityConverter }}">
+                                <TextBlock Text="Price: "/>
+                                <TextBlock Text="{Binding Price}"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Visibility="{Binding Rate, Converter={StaticResource ZeroToVisibilityConverter}}">
+                                <TextBlock Text="Rate: "/>
+                                <TextBlock Text="{Binding Rate}"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Visibility="{Binding Period, Converter={StaticResource ZeroToVisibilityConverter}}">
+                                <TextBlock Text="Period: "/>
+                                <TextBlock Text="{Binding Period}"/>
+                            </StackPanel>
                         </StackPanel>
-
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="MTS: "/>
-                            <TextBlock Text="{Binding MTS}"/>
-                        </StackPanel>
-
-
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="Amount: "/>
-                            <TextBlock Text="{Binding Amount}"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal" Visibility="{Binding Price, Converter={StaticResource ZeroToVisibilityConverter }}">
-                            <TextBlock Text="Price: "/>
-                            <TextBlock Text="{Binding Price}"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal" Visibility="{Binding Rate, Converter={StaticResource ZeroToVisibilityConverter}}">
-                            <TextBlock Text="Rate: "/>
-                            <TextBlock Text="{Binding Rate}"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal" Visibility="{Binding Period, Converter={StaticResource ZeroToVisibilityConverter}}">
-                            <TextBlock Text="Period: "/>
-                            <TextBlock Text="{Binding Period}"/>
-                        </StackPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <Grid Background="Gray" Visibility="{Binding IsBusy,Converter={StaticResource BooleanToVisibilityConverter}}" >
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text=" Loading..."/>
+        </Grid>
     </Grid>
 </UserControl>

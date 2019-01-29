@@ -21,7 +21,7 @@ namespace Connector.Wpf.ViewModels
             set { this.RaiseAndSetIfChanged(ref isBusy, value); }
         }
 
-        string symbol;
+        string symbol = "tBTCUSD";
         public string Symbol
         {
             get => symbol;

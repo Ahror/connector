@@ -16,19 +16,19 @@ namespace Connector.Connectors
             HttpClient = new HttpClient { BaseAddress = new Uri("https://api.bitfinex.com/") };
         }
 
-        protected abstract ICollection<T> Deserialize(string json, bool istBTCUSD);
+        protected abstract ICollection<T> Deserialize(string json, string query);
         public async Task<ICollection<T>> GetRestEntitiesAsync(string query)
         {
             var httpResponse = await HttpClient.GetAsync(query);
             if (httpResponse.IsSuccessStatusCode)
             {
                 string jsonData = await httpResponse.Content.ReadAsStringAsync();
-                ICollection<T> result = Deserialize(jsonData, query.ToLower().Contains("tbtcusd"));
+                ICollection<T> result = Deserialize(jsonData, query);
                 return result;
             }
             else
             {
-                throw new Exception($"Request has failed: {httpResponse.RequestMessage}");
+                return new List<T>();
             }
         }
         public Task<ICollection<T>> GetWSEntities()
