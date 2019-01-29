@@ -1,20 +1,23 @@
-﻿using Connector.Abstractions;
-using Connector.Connectors;
-using ReactiveUI;
+﻿using ReactiveUI;
 using System.Windows.Input;
 
 namespace Connector.Wpf.ViewModels
 {
+    /// <summary>
+    /// Base view model for Trade and Candle view models
+    /// </summary>
     public abstract class BaseViewModel : ReactiveObject, IBaseViewModel
     {
+        /// <summary>
+        /// Send request command
+        /// </summary>
         public ICommand SendRequest { get; set; }
-
-        public BaseViewModel()
-        {
-        }
 
         bool isBusy;
 
+        /// <summary>
+        /// Helper property to use loading while sending a request
+        /// </summary>
         public bool IsBusy
         {
             get { return isBusy; }

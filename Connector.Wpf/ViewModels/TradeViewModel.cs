@@ -6,6 +6,9 @@ using System.Collections.ObjectModel;
 
 namespace Connector.Wpf.ViewModels
 {
+    /// <summary>
+    /// Trade view model
+    /// </summary>
     public class TradeViewModel : BaseViewModel, ITradeViewModel
     {
         private TradeConnector tradeConnector;

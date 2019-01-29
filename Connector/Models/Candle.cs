@@ -2,6 +2,9 @@
 
 namespace Connector.Model
 {
+    /// <summary>
+    /// Candle entity
+    /// </summary>
     public class Candle : BaseEntity
     {
         /// <summary>

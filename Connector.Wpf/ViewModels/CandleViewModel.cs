@@ -6,6 +6,9 @@ using System.Collections.ObjectModel;
 
 namespace Connector.Wpf.ViewModels
 {
+    /// <summary>
+    /// Candle view model
+    /// </summary>
     public class CandleViewModel : BaseViewModel, ICandleViewModel
     {
         string timeFrame = "1m";

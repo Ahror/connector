@@ -2,6 +2,9 @@
 
 namespace Connector.Model
 {
+    /// <summary>
+    /// Trade entity
+    /// </summary>
     public class Trade : BaseEntity
     {
         /// <summary>

@@ -1,7 +1,6 @@
-﻿using System;
-using Autofac.Extras.Moq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Autofac.Extras.Moq;
 using Moq;
+using System;
 
 namespace Connector.Tests
 {

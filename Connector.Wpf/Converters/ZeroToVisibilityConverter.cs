@@ -5,6 +5,9 @@ using System.Windows.Data;
 
 namespace Connector.Wpf.Converters
 {
+    /// <summary>
+    /// 0 to visibility converter
+    /// </summary>
     public class ZeroToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
