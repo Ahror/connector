@@ -36,7 +36,7 @@
 
             <Button Grid.Row="3" Command="{Binding SendRequest}" Margin="5" Content="Send a request" Grid.Column="1" HorizontalAlignment="Right"/>
 
-            <ListView ItemsSource="{Binding Candles}" Margin="5" Grid.Row="4" Grid.ColumnSpan="2">
+            <ListView Name="candleList" ItemsSource="{Binding Candles}" Margin="5" Grid.Row="4" Grid.ColumnSpan="2">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -73,10 +73,21 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <TextBlock Margin="10" Grid.Row="4" Text="There is nothing to show" >
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=candleList, Path=Items.Count}" Value="0">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
         </Grid>
-        <Grid Background="Gray" Visibility="{Binding IsBusy,Converter={StaticResource BooleanToVisibilityConverter}}" >
+        <Grid Background="LightGray" Visibility="{Binding IsBusy,Converter={StaticResource BooleanToVisibilityConverter}}" >
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text=" Loading..."/>
         </Grid>
     </Grid>
-
 </UserControl>
