@@ -62,11 +62,11 @@
     </Compile>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\ZeroToVisibilityConverter.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="Abstractions\BaseViewModel.cs" />
     <Compile Include="ViewModels\CandleViewModel.cs" />
-    <Compile Include="ViewModels\IBaseViewModel.cs" />
-    <Compile Include="ViewModels\ICandleViewModel.cs" />
-    <Compile Include="ViewModels\ITradeViewModel.cs" />
+    <Compile Include="Abstractions\IBaseViewModel.cs" />
+    <Compile Include="Abstractions\ICandleViewModel.cs" />
+    <Compile Include="Abstractions\ITradeViewModel.cs" />
     <Compile Include="ViewModels\TradeViewModel.cs" />
     <Page Include="Controls\CandleControl.xaml">
       <SubType>Designer</SubType>

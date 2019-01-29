@@ -12,18 +12,21 @@ namespace Connector.Connectors
     /// <typeparam name="T"></typeparam>
     public abstract class BaseConnector<T> : IConnector<T> where T : BaseEntity
     {
-        protected HttpClient HttpClient { get; set; }
         public BaseConnector()
         {
             HttpClient = new HttpClient { BaseAddress = new Uri("https://api.bitfinex.com/") };
         }
+
+        /// <summary>
+        /// Http client
+        /// </summary>
+        protected HttpClient HttpClient { get; set; }
 
         protected abstract ICollection<T> Deserialize(string json, string query);
 
         /// <summary>
         /// Getting entity by query from rest
         /// </summary>
-        /// <param name="query"></param>
         /// <returns></returns>
         public async Task<ICollection<T>> GetRestEntitiesAsync(string query)
         {
@@ -35,6 +38,10 @@ namespace Connector.Connectors
             return Deserialize(jsonData, query);
         }
 
+        /// <summary>
+        /// Getting entity by query from WebSocket
+        /// </summary>
+        /// <returns></returns>
         public Task<ICollection<T>> GetWSEntities()
         {
             throw new NotImplementedException();

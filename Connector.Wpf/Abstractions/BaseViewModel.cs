@@ -1,7 +1,7 @@
 ﻿using ReactiveUI;
 using System.Windows.Input;
 
-namespace Connector.Wpf.ViewModels
+namespace Connector.Wpf.Abstractions
 {
     /// <summary>
     /// Base view model for Trade and Candle view models

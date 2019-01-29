@@ -1,5 +1,6 @@
 ﻿using Connector.Connectors;
 using Connector.Model;
+using Connector.Wpf.Abstractions;
 using ReactiveUI;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

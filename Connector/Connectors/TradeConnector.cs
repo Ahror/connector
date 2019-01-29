@@ -13,9 +13,6 @@ namespace Connector.Connectors
         /// <summary>
         /// Deserializing result from Api to Trade entity list
         /// </summary>
-        /// <param name="json"></param>
-        /// <param name="query"></param>
-        /// <returns></returns>
         protected override ICollection<Trade> Deserialize(string json, string query)
         {
             ICollection<Trade> trades = new List<Trade>();

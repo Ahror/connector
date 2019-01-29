@@ -1,4 +1,4 @@
-﻿namespace Connector.Wpf.ViewModels
+﻿namespace Connector.Wpf.Abstractions
 {
     /// <summary>
     /// ICandleViewModel interface
