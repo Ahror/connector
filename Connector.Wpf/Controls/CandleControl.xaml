@@ -19,6 +19,10 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -26,18 +30,30 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Symbol" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBlock Text="Symbol" VerticalAlignment="Center"/>
             <TextBox Grid.Column="1" Text="{Binding Symbol}" Margin="5"/>
 
-            <TextBlock Grid.Row="1" Text="Time frame" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Text="Time frame (Available values: '1m', '5m', '15m', '30m', '1h', '3h', '6h', '12h', '1D', '7D', '14D', '1M')" VerticalAlignment="Center"/>
             <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding TimeFrame}" Margin="5"/>
 
-            <TextBlock Grid.Row="2" Text="Section" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Text="Section (Available values: 'last', 'hist')"  VerticalAlignment="Center"/>
             <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Section}" Margin="5"/>
 
-            <Button Grid.Row="3" Command="{Binding SendRequest}" Margin="5" Content="Send a request" Grid.Column="1" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="3" Text="Limit (Number of candles requested (Max: 5000))"  VerticalAlignment="Center"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Limit}" Margin="5"/>
 
-            <ListView Name="candleList" ItemsSource="{Binding Candles}" Margin="5" Grid.Row="4" Grid.ColumnSpan="2">
+            <TextBlock Grid.Row="4" Text="Start (Filter start (ms))" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Start}" Margin="5"/>
+
+            <TextBlock Grid.Row="5" Text="End (Filter end (ms))" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding End}" Margin="5"/>
+
+            <TextBlock Grid.Row="6" Text="Sort (if = 1 it sorts results returned with old > new)"  VerticalAlignment="Center"/>
+            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Sort}" Margin="5"/>
+
+            <Button Grid.Row="7" Command="{Binding SendRequest}" Margin="5" Content="Send a request" Grid.Column="1" />
+
+            <ListView Name="candleList" ItemsSource="{Binding Candles}" Margin="5" Grid.Row="8" Grid.ColumnSpan="2">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -74,7 +90,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <TextBlock Margin="10" Grid.Row="4" Text="There is nothing to show" >
+            <TextBlock Margin="10" Grid.Row="8" Text="There is nothing to show" >
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed" />
